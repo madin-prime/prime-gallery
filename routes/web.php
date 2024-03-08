@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Image;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home')->with(['image' => Image::get() ]);
+})->name('home');
+
+Route::get('/upload', function () {
+    return view('upload');
+})->name('upload');
+
+Route::post('/image-upload', [ImageController::class, 'upload'])->name('submit');
+
+// Route::get('/img', [ImageController::class, 'redirectImage'])->name('img');
