@@ -1,4 +1,4 @@
-@extends('layout.app')
+x@extends('layout.app')
 
 @section('title', 'Prime Gallery')
 
@@ -8,9 +8,9 @@
 
         @foreach( $image as $img)
 
-        <img class="img" src="{{ asset('storage', $image->image) }}" alt="image">
+        <img class="rounded d-block" width="320" src="{{ asset('storage/' . $img->image) }}" alt="image">
 
-        @endforeach 
+        @endforeach
     </div>
 
 @endsection
